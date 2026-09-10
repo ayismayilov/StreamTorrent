@@ -1,0 +1,130 @@
+{
+  "name": "streamtorrent",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Torrent streaming for macOS and Windows",
+  "author": "StreamTorrent",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "tsc --noEmit && vite build && node scripts/build.mjs",
+    "start": "electron .",
+    "test": "tsx --test tests/*.test.ts",
+    "package:mac": "pnpm build && electron-builder --mac dir --arm64",
+    "package:win": "pnpm build && electron-builder --win --x64",
+    "check:desktop": "node scripts/release-check.mjs",
+    "check:protocol": "node scripts/protocol-check.mjs",
+    "prepare:media": "node scripts/prepare-media.mjs",
+    "package:win:installer": "pnpm build && electron-builder --win nsis --x64",
+    "icons:mac": "node scripts/generate-mac-icons.mjs"
+  },
+  "dependencies": {
+    "parse-torrent": "11.0.24",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "webtorrent": "3.0.21"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/parse-torrent": "^11.0.1",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/webtorrent": "^3.0.0",
+    "@vitejs/plugin-react": "latest",
+    "electron": "latest",
+    "electron-builder": "latest",
+    "esbuild": "latest",
+    "playwright": "latest",
+    "tsx": "latest",
+    "typescript": "5.9.3",
+    "vite": "latest"
+  },
+  "build": {
+    "appId": "local.streamtorrent.app",
+    "productName": "StreamTorrent",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "package.json",
+      "THIRD_PARTY_NOTICES.md"
+    ],
+    "asarUnpack": [
+      "**/*.node"
+    ],
+    "mac": {
+      "target": [
+        {
+          "target": "dir",
+          "arch": [
+            "arm64"
+          ]
+        }
+      ],
+      "category": "public.app-category.entertainment",
+      "identity": null,
+      "extraResources": [
+        {
+          "from": "vendor/darwin-arm64",
+          "to": "media",
+          "filter": [
+            "ffmpeg",
+            "ffprobe"
+          ]
+        },
+        {
+          "from": "vendor/SOURCES.json",
+          "to": "media/SOURCES.json"
+        }
+      ],
+      "icon": "assets/icon.icns"
+    },
+    "npmRebuild": false,
+    "protocols": [
+      {
+        "name": "Magnet links",
+        "schemes": [
+          "magnet"
+        ]
+      }
+    ],
+    "afterPack": "scripts/after-pack.cjs",
+    "win": {
+      "target": [
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "extraResources": [
+        {
+          "from": "vendor/win32-x64",
+          "to": "media",
+          "filter": [
+            "ffmpeg.exe",
+            "ffprobe.exe"
+          ]
+        },
+        {
+          "from": "vendor/SOURCES.json",
+          "to": "media/SOURCES.json"
+        }
+      ],
+      "signExecutable": false,
+      "icon": "assets/icon-1024.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    },
+    "artifactName": "StreamTorrent-${version}-${os}-${arch}.${ext}"
+  }
+}

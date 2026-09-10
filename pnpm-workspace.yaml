@@ -1,0 +1,9 @@
+allowBuilds:
+  electron: true
+  esbuild: true
+  utp-native: false
+  bufferutil: false
+  electron-winstaller: false
+  ip-set: false
+  node-datachannel: true
+  utf-8-validate: false
