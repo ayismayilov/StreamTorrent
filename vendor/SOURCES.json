@@ -1,0 +1,34 @@
+[
+  {
+    "name": "@ffmpeg-installer/darwin-arm64",
+    "version": "4.1.5",
+    "license": "https://git.ffmpeg.org/gitweb/ffmpeg.git/blob_plain/HEAD:/LICENSE.md",
+    "url": "https://registry.npmjs.org/@ffmpeg-installer/darwin-arm64/-/darwin-arm64-4.1.5.tgz",
+    "integrity": "sha512-hYqTiP63mXz7wSQfuqfFwfLOfwwFChUedeCVKkBtl/cliaTM7/ePI9bVzfZ2c+dWu3TqCwLDRWNSJ5pqZl8otA==",
+    "homepage": "https://www.osxexperts.net/"
+  },
+  {
+    "name": "@ffprobe-installer/darwin-arm64",
+    "version": "5.0.1",
+    "license": "LGPL-2.1",
+    "url": "https://registry.npmjs.org/@ffprobe-installer/darwin-arm64/-/darwin-arm64-5.0.1.tgz",
+    "integrity": "sha512-vwNCNjokH8hfkbl6m95zICHwkSzhEvDC3GVBcUp5HX8+4wsX10SP3B+bGur7XUzTIZ4cQpgJmEIAx6TUwRepMg==",
+    "homepage": "https://formulae.brew.sh/formula/ffmpeg"
+  },
+  {
+    "name": "@ffmpeg-installer/win32-x64",
+    "version": "4.1.0",
+    "license": "GPLv3",
+    "url": "https://registry.npmjs.org/@ffmpeg-installer/win32-x64/-/win32-x64-4.1.0.tgz",
+    "integrity": "sha512-Drt5u2vzDnIONf4ZEkKtFlbvwj6rI3kxw1Ck9fpudmtgaZIHD4ucsWB2lCZBXRxJgXR+2IMSti+4rtM4C4rXgg==",
+    "homepage": "https://ffmpeg.zeranoe.com/builds/win64/static/"
+  },
+  {
+    "name": "@ffprobe-installer/win32-x64",
+    "version": "5.1.0",
+    "license": "GPL-3.0",
+    "url": "https://registry.npmjs.org/@ffprobe-installer/win32-x64/-/win32-x64-5.1.0.tgz",
+    "integrity": "sha512-jMGYeAgkrdn4e2vvYt/qakgHRE3CPju4bn5TmdPfoAm1BlX1mY9cyMd8gf5vSzI8gH8Zq5WQAyAkmekX/8TSTg==",
+    "homepage": "https://www.gyan.dev/ffmpeg/builds/"
+  }
+]
